@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://festa.nosferk.com/nosferk.png">
+<title>Gabrielle & Victor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; color: #fff; overflow-x: hidden; background: #1a1a1a; }
+
+  
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    background: url('https://festa.nosferk.com/maisn.jpg') center center / cover no-repeat;
+    background-attachment: fixed;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-names {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 10vw, 7.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-amp {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255, 220, 155, 0.95);
+    font-size: 0.82em;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 220, 155, 0.65);
+    margin: 1.8rem auto;
+  }
+
+  .hero-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: clamp(0.82rem, 2.5vw, 0.95rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  .photo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 50px;
+    padding: 0.5rem 1.4rem 0.5rem 0.5rem;
+    margin-top: 2.2rem;
+  }
+
+  .photo-badge img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 220, 155, 0.6);
+  }
+
+  .photo-badge span {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    animation: float 2.6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(7px); }
+  }
+
+  
+  .location {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: url('https://festa.nosferk.com/images4.jpeg') center center / cover no-repeat;
+    background-attachment: fixed;
+  }
+
+  .location::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.38) 100%);
+  }
+
+  .location-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    max-width: 1040px;
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(255, 220, 155, 0.85);
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+  }
+
+  .location-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 1.6rem;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  .info-row svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .agenda-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.6rem;
+    padding: 0.75rem 1.6rem;
+    background: rgba(255, 220, 155, 0.12);
+    border: 1px solid rgba(255, 220, 155, 0.48);
+    border-radius: 50px;
+    color: rgba(255, 220, 155, 0.95);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+
+  .agenda-btn:hover {
+    background: rgba(255, 220, 155, 0.26);
+    border-color: rgba(255, 220, 155, 0.8);
+  }
+
+  .map-wrap {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 220, 155, 0.28);
+    box-shadow: 0 10px 50px rgba(0,0,0,0.55);
+    height: 380px;
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  
+  .footer {
+    background: #0d0d0d;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .footer span {
+    color: rgba(255, 220, 155, 0.5);
+  }
+
+  
+  @media (max-width: 768px) {
+    .location-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .map-wrap {
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      background-attachment: scroll;
+    }
+    .location {
+      background-attachment: scroll;
+    }
+
+    .hero-names {
+      font-size: clamp(2.8rem, 15vw, 4.5rem);
+    }
+
+    .location-inner {
+      padding: 2rem 1.25rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <h1 class="hero-names">
+      Gabrielle<br>
+      <span class="hero-amp">&amp;</span><br>
+      Victor
+    </h1>
+
+    <div class="hero-divider"></div>
+    <div class="photo-badge">
+      <img
+        src="https://festa.nosferk.com/images.png"
+        alt="Foto">
+      
+      <span>anos</span>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.5"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+
+
+<section class="location">
+  <div class="location-inner">
+  	
+    <div class="location-text">
+      <p class="section-tag">onde</p>
+
+      <h2 class="location-title">Ori</h2>
+
+      <div class="info-row">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Às 18 horas</span>
+      </div>
+
+      <div class="info-row">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>Campeche - Florianópolis</span>
+      </div>
+      <a class="agenda-btn"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Festa+Gabrielle+%26+Victor&dates=20260620T210000Z/20260620T240000Z&details=Celebra%C3%A7%C3%A3o+no+Ori&location=Ori,+Campeche"
+         target="_blank"
+         rel="noopener noreferrer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Adicionar à agenda
+      </a>
+    </div>
+    
+    <div class="map-wrap">
+
+      <iframe
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=Av.%20Pequeno%20Pr%C3%ADncipe%2C%201279%20-%20Campeche%2C%20Florian%C3%B3polis%20-%20SC%2C%2088063-000&amp;maptype=satellite&amp;zoom=16">
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Localização do Ori — Campeche">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+<footer class="footer">
+  <img width=140px src="https://festa.nosferk.com/1000220288-removebg-preview.png"></img>
+</footer>
+</body>
+</html>
